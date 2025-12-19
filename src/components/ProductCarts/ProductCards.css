@@ -1,0 +1,7 @@
+.Cards {
+    width: 300px;
+    height: 180px;
+    background-color: azure;
+    flex-wrap: wrap;
+    border-radius: 20px;
+}
