@@ -6,8 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "codegen": "npx @openapitools/openapi-generator-cli generate -i .\\src\\assets\\swagger.json -g typescript-axios -o .\\src\\api\\"
   },
+  
   "devDependencies": {
     "typescript": "~5.9.3",
     "vite": "^7.2.4"

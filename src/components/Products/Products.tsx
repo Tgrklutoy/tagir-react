@@ -1,48 +1,26 @@
+import { useEffect, useState } from "react";
 import ProductCards from "../ProductCarts/ProductCards";
-import type { Product } from "../Products";
 import "./Products.css"
+import type { ItemListSchema } from "../../api";
+import axios from "axios";
 export default function Products () {
-const productList: Product[] = [
-    {
-      id: 1,
-      name: "Вентилятор",
-      price: 779,
-      description: "Самый лучший вентилятор в каменном веке",
-      img: null,
-    },
-    {
-      id: 2,
-      name: "Шоколадное Молоко",
-      price: 173,
-      description: "Берется у черных коров",
-      img: null,
-    },
-    {
-      id: 3,
-      name: "Матрас",
-      price: 1000,
-      description: "Говорят что он прошел уже 5 поколений 1 семьи",
-      img: null,
-    },
-    {
-      id: 4,
-      name: "Портативный охладитель для арбузов",
-      price: 9399,
-      description: "В нем ваш арбуз всегда будет освежающим и холодным",
-      img: null,
-    },
-    {
-      id: 5,
-      name: "Ложка",
-      price: 49.9,
-      description: "Никто точно не знает откуда она...",
-      img: null,
-    },
-  ];
+const [products, setProducts] = useState<ItemListSchema[]>([]);
+
+  async function loadData () {
+    await axios
+    .get ("http://89.169.3.47/api/v1/items?sort=newest&page=1&perPage=20").then((res) => {
+      setProducts(res.data.data)
+    });
+  }
+
+  useEffect(() => {
+    loadData();
+  },[]);
+
     return(
         <div className="List">
         <a>Продукты</a>
-        {productList.map((product) => {
+        {products?.map((product) => {
         return (
           <ProductCards
             product={product}
