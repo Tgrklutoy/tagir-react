@@ -1,3 +1,4 @@
+import useHelloWorld from "../../composambles/useHellloworld";
 import "./Hero.css"
 import { useEffect, useState } from "react"
 
@@ -7,6 +8,8 @@ import { useEffect, useState } from "react"
 export default function Hero () {
     const [counter1, setCounter1] = useState (0);
  const [counter2, setCounter2] = useState (0);
+
+useHelloWorld 
 
 useEffect
 function add1 () {
@@ -23,6 +26,9 @@ const [num4, Setnum4] = useState ("")
 const [num5, Setnum5] = useState ("")
 const [summary, Setsum] = useState ("")
 
+const [data, dobleData, Setdata] = useHelloWorld ();
+
+
 function effect () {
    setreversedtext(text.split("").reverse().join(""));
 };
@@ -31,7 +37,7 @@ useEffect (effect, [text]);
 function sum (){
 
   Setsum ( 
- sum = Number(num1) + Number(num2) + Number(num3) + Number(num4) + Number(num5));
+Number(num1) + Number(num2) + Number(num3) + Number(num4) + Number(num5));
 };
 useEffect (sum,[num1,num2,num3,num4,num5]);
 
@@ -64,6 +70,11 @@ useEffect (sum,[num1,num2,num3,num4,num5]);
         }} /> 
         <br />
         <input value={summary}/>
+        <br />
+        <input type="number" value={data} onChange={(event) =>{
+            Setdata (event.target.value)
+        }} />
+        <h1>{dobleData}</h1>
         </div>
     )
 }
