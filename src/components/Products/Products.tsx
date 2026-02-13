@@ -3,6 +3,7 @@ import ProductCards from "../ProductCarts/ProductCards";
 import "./Products.css"
 import type { ItemListSchema } from "../../api";
 import axios from "axios";
+import { GetItems } from "../../composambles/useItems";
 export default function Products () {
 const [products, setProducts] = useState<ItemListSchema[]>([]);
 
@@ -12,9 +13,12 @@ const [products, setProducts] = useState<ItemListSchema[]>([]);
       setProducts(res.data.data)
     });
   }
-
+  
   useEffect(() => {
-    loadData();
+    GetItems()
+    .then((res) => {
+      setProducts (res)
+  })
   },[]);
 
     return(
